@@ -9,6 +9,13 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http, "/asset/i18/", ".json");
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +25,13 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AppRoutingModule, 
     AngularFireModule.initializeApp(environment.firebase), 
     AngularFirestoreModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
