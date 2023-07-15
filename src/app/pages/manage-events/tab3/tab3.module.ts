@@ -16,8 +16,8 @@ import { LoginModule } from '../login/login.module';
     FormsModule,
     Tab3PageRoutingModule,
     TranslateModule.forChild(),
-    AddEditEventsModule,
-    LoginModule,
+    // AddEditEventsModule,
+    // LoginModule,
   ],
   declarations: [Tab3Page]
 })

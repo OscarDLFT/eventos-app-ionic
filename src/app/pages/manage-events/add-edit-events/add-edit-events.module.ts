@@ -6,7 +6,7 @@ import { AddEditEventsComponent } from './add-edit-events.component';
 
 @NgModule({
   declarations: [AddEditEventsComponent],
-  exports: [AddEditEventsModule],
+  exports: [AddEditEventsComponent],
   imports: [
     CommonModule
   ]

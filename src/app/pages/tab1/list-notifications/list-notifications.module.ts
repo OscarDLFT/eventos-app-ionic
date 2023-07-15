@@ -6,7 +6,7 @@ import { ListNotificationsComponent } from './list-notifications.component';
 
 @NgModule({
   declarations: [ListNotificationsComponent],
-  exports: [ListNotificationsModule],
+  exports: [ListNotificationsComponent],
   imports: [
     CommonModule
   ]
