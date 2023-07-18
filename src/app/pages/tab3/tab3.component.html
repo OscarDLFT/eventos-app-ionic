@@ -3,9 +3,14 @@
     <ion-title class="ion-text-center">
       {{'label.manage.events' | translate}}
     </ion-title>
+
+    <ion-buttons slot="end" *ngIf="!!auth.isLogged" class="ion-margin-end">
+        <ion-icon name="power-outline" (click)="logout()"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-login></app-login>
+  <app-login *ngIf="!auth.isLogged"></app-login>
+  <app-add-edit-events *ngIf="auth.isLogged"></app-add-edit-events>
 </ion-content>
