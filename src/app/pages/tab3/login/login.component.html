@@ -1,3 +1,27 @@
-<p>
-  login works!
-</p>
+<form (ngSubmit)="login()">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>{{'label.email' | translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="user.email" name="email" [clearInput]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>{{'label.password' | translate}}</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password" name="password" [clearInput]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button type="submit" expand="block">{{'label.login' | translate}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
