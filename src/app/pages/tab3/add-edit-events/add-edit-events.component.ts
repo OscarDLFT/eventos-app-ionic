@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'src/app/models/events';
 import { EventService } from 'src/app/service/event.service';
 import { ToastService } from 'src/app/service/toast.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-add-edit-events',
   templateUrl: './add-edit-events.component.html',
@@ -40,6 +40,14 @@ export class AddEditEventsComponent  implements OnInit {
   }
 
   addEditEvent(): void {
+    this.event.start = moment(this.event.start).format('YYYY.MM.DDTHH:mm');
+
+    if(this.showEnd){
+      this.event.end = moment(this.event.end).format('YYYY.MM.DDTHH:mm');
+    } else {
+      this.event.end = null;
+    }
+
     if(this.edit){
     } else {
       this.eventService.addEvent(this.event).then(() => {
