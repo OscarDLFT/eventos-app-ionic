@@ -22,6 +22,8 @@
     "label.add.event": "Añadir evento",
     "label.new.event": "Nuevo evento",
     "label.ok.text": "Ok",
-    "label.cancel.text": "Cancelar"
+    "label.cancel.text": "Cancelar",
+    "label.add.event.error": "Se ha producido un error al añadir el evento",
+    "label.add.event.success": "Se ha añadido el evento"
 
 }

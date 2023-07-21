@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'src/app/models/events';
+import { EventService } from 'src/app/service/event.service';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-add-edit-events',
@@ -15,7 +18,11 @@ export class AddEditEventsComponent  implements OnInit {
   /**VARIABLES */
   public event!: Events;
 
-  constructor() { }
+  constructor(
+    private eventService: EventService,
+    private toastService: ToastService,
+    private translate: TranslateService,
+  ) { }
 
   ngOnInit() {
     this.initEvent();
@@ -33,6 +40,14 @@ export class AddEditEventsComponent  implements OnInit {
   }
 
   addEditEvent(): void {
-    
+    if(this.edit){
+    } else {
+      this.eventService.addEvent(this.event).then(() => {
+        this.toastService.showToast(this.translate.instant('label.add.event.success'));
+      }).catch(error => {
+        console.error(error); 
+        this.toastService.showToast(this.translate.instant('label.add.event.error'))
+      });
+    }
   }
 }
