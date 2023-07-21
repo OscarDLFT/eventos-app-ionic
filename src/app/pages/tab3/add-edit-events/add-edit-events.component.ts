@@ -17,7 +17,9 @@ export class AddEditEventsComponent  implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.initEvent();
+  }
 
   initEvent(): void {
     if(!this.event){
@@ -28,5 +30,9 @@ export class AddEditEventsComponent  implements OnInit {
     } else {
       this.edit = true;
     }
+  }
+
+  addEditEvent(): void {
+    
   }
 }

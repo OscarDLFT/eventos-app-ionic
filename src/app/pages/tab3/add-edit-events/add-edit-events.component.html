@@ -1,3 +1,109 @@
-<p>
-  add-edit-events works!
-</p>
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <form (ngSubmit)="addEditEvent()">
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.title.event' | translate}}</ion-label>
+              <ion-input type="text" name="title" [(ngModel)]="event.title"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.start.event' | translate}}</ion-label>
+                <ion-datetime 
+                  displayFormat="DD MM YYYY HH mm" 
+                  [(ngModel)]="event.start" 
+                  name="start" 
+                  [doneText]="'label.ok.text' | translate"
+                  [cancelText]="'label.cancel.text' | translate"
+                >
+                </ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.has.end.event' | translate}}</ion-label>
+              <ion-toggle name="show-end" [(ngModel)]="showEnd"></ion-toggle>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row *ngIf="showEnd">
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.end.event' | translate}}</ion-label>
+                <ion-datetime 
+                  displayFormat="DD MM YYYY HH mm" 
+                  [(ngModel)]="event.end" 
+                  name="end" 
+                  [doneText]="'label.ok.text' | translate"
+                  [cancelText]="'label.cancel.text' | translate"
+                >
+                </ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.type.event' | translate}}</ion-label>
+              <ion-item>
+                <ion-select 
+                  value="blog" 
+                  name="type"
+                  [okText]="'label.ok.text' | translate"
+                  [cancelText]="'label.cancel.text' | translate" 
+                  [(ngModel)]="event.className"
+                >
+                  <ion-select-option value="blog">{{'label.type.post.event' | translate}}</ion-select-option>
+                  <ion-select-option value="blog">{{'label.type.video.event' | translate}}</ion-select-option>
+                  <ion-select-option value="blog">{{'label.type.streaming.event' | translate}}</ion-select-option>
+                  <ion-select-option value="blog">{{'label.type.udemy.event' | translate}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.url.event' | translate}}</ion-label>
+              <ion-input type="text" name="url" [(ngModel)]="event.url"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label>{{'label.description.event' | translate}}</ion-label>
+              <ion-textarea name="description" [(ngModel)]="event.description"></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" type="submit">{{(edit ? 'label.edit.event' : 'label.add.event' | translate) }}</ion-button>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" type="button">{{'label.new.event' | translate}}</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

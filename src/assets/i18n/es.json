@@ -6,6 +6,22 @@
     "label.password": "Password",
     "label.login": "Login",
     "label.login.success": "Logueado con éxito",
-    "label.login.error": "Se ha procido un error al loguearse"
+    "label.login.error": "Se ha procido un error al loguearse",
+    "label.title.event": "Título",
+    "label.start.event": "Fecha Inicio",
+    "label.has.end.event": "¿Tiene fecha de fin?",
+    "label.end.event": "Fecha Fin",
+    "label.type.event": "Tipo",
+    "label.type.post.event": "Post",
+    "label.type.video.event": "Video",
+    "label.type.streaming.event": "Streaming",
+    "label.type.udemy.event": "Udemy",
+    "label.url.event": "URL",
+    "label.description.event": "Descripción",
+    "label.edit.event": "Editar evento",
+    "label.add.event": "Añadir evento",
+    "label.new.event": "Nuevo evento",
+    "label.ok.text": "Ok",
+    "label.cancel.text": "Cancelar"
 
 }
