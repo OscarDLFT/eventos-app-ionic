@@ -27,4 +27,15 @@ addEvent(event: Events): Promise<boolean>{
   });
 }
 
+editEvent(event: Events): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    try {
+      this.db.object("/eventos/" + event.id).set(event);
+      resolve(true);
+    } catch (error) {
+      reject('error')
+    }
+  });
+}
+
 }

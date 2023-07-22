@@ -49,6 +49,12 @@ export class AddEditEventsComponent  implements OnInit {
     }
 
     if(this.edit){
+      this.eventService.addEvent(this.event).then(() => {
+        this.toastService.showToast(this.translate.instant('label.edit.event.success'));
+      }).catch(error => {
+        console.error(error); 
+        this.toastService.showToast(this.translate.instant('label.edit.event.error'))
+      });
     } else {
       this.eventService.addEvent(this.event).then(() => {
         this.toastService.showToast(this.translate.instant('label.add.event.success'));
@@ -57,5 +63,12 @@ export class AddEditEventsComponent  implements OnInit {
         this.toastService.showToast(this.translate.instant('label.add.event.error'))
       });
     }
+  }
+
+  newEvent(): void {
+    this.event = new Events();
+    this.edit = false;
+    this.showEnd = false;
+    this.event.className = 'blog';
   }
 }
