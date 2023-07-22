@@ -49,7 +49,7 @@ export class AddEditEventsComponent  implements OnInit {
     }
 
     if(this.edit){
-      this.eventService.addEvent(this.event).then(() => {
+      this.eventService.editEvent(this.event).then(() => {
         this.toastService.showToast(this.translate.instant('label.edit.event.success'));
       }).catch(error => {
         console.error(error); 

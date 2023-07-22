@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import * as moment from 'moment';
+import { Observable } from 'rxjs';
 import { Events } from 'src/app/models/events';
 
 
@@ -36,6 +38,12 @@ editEvent(event: Events): Promise<boolean> {
       reject('error')
     }
   });
+}
+
+/** De los eventos que hay coge ordenados los eventos que empiezan por el día en el que se está */
+getFuturesEvents(): Observable<Events[]> {
+  const hoy = moment().format('YYYY.MM.DD');
+  return this.db.list<Events>('eventos', ref => ref.orderByChild('start').startAt(hoy)).valueChanges();
 }
 
 }
