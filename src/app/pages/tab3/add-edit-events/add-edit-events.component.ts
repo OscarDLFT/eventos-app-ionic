@@ -4,6 +4,7 @@ import { Events } from 'src/app/models/events';
 import { EventService } from 'src/app/service/event.service';
 import { ToastService } from 'src/app/service/toast.service';
 import * as moment from 'moment';
+import { NavParams } from '@ionic/angular';
 @Component({
   selector: 'app-add-edit-events',
   templateUrl: './add-edit-events.component.html',
@@ -22,6 +23,7 @@ export class AddEditEventsComponent  implements OnInit {
     private eventService: EventService,
     private toastService: ToastService,
     private translate: TranslateService,
+    private navParams: NavParams,
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class AddEditEventsComponent  implements OnInit {
   }
 
   initEvent(): void {
+    this.event = this.navParams.data['event'];
     if(!this.event){
       this.edit = false;
       this.event = new Events();
@@ -36,6 +39,7 @@ export class AddEditEventsComponent  implements OnInit {
       this.event.className = 'blog';
     } else {
       this.edit = true;
+      this.showEnd = this.event.end != null;
     }
   }
 

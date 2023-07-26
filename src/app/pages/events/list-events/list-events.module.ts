@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListEventsComponent } from './list-events.component';
+import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -8,7 +10,9 @@ import { ListEventsComponent } from './list-events.component';
   declarations: [ListEventsComponent],
   exports: [ListEventsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    IonicModule,
+    TranslateModule
   ]
 })
 export class ListEventsModule { }

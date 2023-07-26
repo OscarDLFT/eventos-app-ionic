@@ -26,6 +26,10 @@
     "label.add.event.error": "Se ha producido un error al añadir el evento",
     "label.add.event.success": "Se ha añadido el evento",
     "label.edit.event.success": "Evento editado",
-    "label.edit.event.error": "Se ha producido un error al editar el evento"
-
+    "label.edit.event.error": "Se ha producido un error al editar el evento",
+    "label.no.events": "No hay eventos próximos",
+    "label.actions.event": "Acciones",
+    "label.open.url": "Abrir URL",
+    "label.remove.event": "Eliminar evento",
+    "label.close.options": "Cerrar"
 }
