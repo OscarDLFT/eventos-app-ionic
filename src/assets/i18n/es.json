@@ -31,5 +31,8 @@
     "label.actions.event": "Acciones",
     "label.open.url": "Abrir URL",
     "label.remove.event": "Eliminar evento",
-    "label.close.options": "Cerrar"
+    "label.close.options": "Cerrar",
+    "label.delete.ok": "Evento eliminado",
+    "label.delete.error": "Error al eliminar el evento"
+
 }

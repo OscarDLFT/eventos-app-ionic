@@ -5,5 +5,5 @@ export class Events {
     end?: string | null;
     description?: string;
     className?: string; 
-    url?: string;
+    url?: string | null;
 }

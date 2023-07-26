@@ -1,9 +1,11 @@
+import { ToastService } from './../../../service/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, NavController, NavParams } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'src/app/models/events';
 import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-list-events',
@@ -22,6 +24,7 @@ export class ListEventsComponent  implements OnInit {
     private translate: TranslateService,
     private navController: NavController,
     private navParams: NavParams,
+    private toastService: ToastService,
   ) { }
 
   ngOnInit() {
@@ -40,7 +43,7 @@ export class ListEventsComponent  implements OnInit {
     if(this.auth.isLogged){
       this.presentActionEvent();
     } else {
-
+      this.openUrl(this.eventSelected.url);
     }
   }
 
@@ -53,7 +56,7 @@ export class ListEventsComponent  implements OnInit {
           text: this.translate.instant('label.open.url'),
           icon: 'earth-outline',
           handler: () => {
-            
+            this.openUrl(this.eventSelected?.url);
           },
         },
         {
@@ -67,7 +70,7 @@ export class ListEventsComponent  implements OnInit {
           text: this.translate.instant('label.remove.event'),
           icon: 'trash',
           handler: () => {
-            
+            this.removeEvent();
           },
         },
         {
@@ -84,6 +87,22 @@ export class ListEventsComponent  implements OnInit {
   editEvent(): void {
     this.navParams.data['event'] = this.eventSelected;
     this.navController.navigateForward('/tabs/tab4');
+  }
+
+  async openUrl(url: string | null | undefined): Promise<void> {
+    if(url){
+    await Browser.open({url})
+    }
+  }
+
+  removeEvent(): void {
+    this.navParams.data['event'] = null;
+    this.eventService.deleteEvent(this.eventSelected.id)
+    .then(() => {
+      this.toastService.showToast(this.translate.instant('label.delete.ok'));
+    }).catch(e => {
+      this.toastService.showToast(this.translate.instant('label.delete.error'))
+    });
   }
 
 }
