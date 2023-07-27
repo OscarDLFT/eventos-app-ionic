@@ -1,11 +1,12 @@
 import { ToastService } from './../../../service/toast.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActionSheetController, NavController, NavParams } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'src/app/models/events';
 import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
 import { Browser } from '@capacitor/browser';
+import { AlertService } from 'src/app/service/alert.service';
 
 @Component({
   selector: 'app-list-events',
@@ -13,9 +14,11 @@ import { Browser } from '@capacitor/browser';
   styleUrls: ['./list-events.component.scss'],
 })
 export class ListEventsComponent  implements OnInit {
-
+  @ViewChild('searchBar', {static: false}) searchBar: any;
   public events: Events[] = [];
+  public eventosOriginal: Events[] = [];
   public eventSelected!: Events;
+  public typeSearch: string | null = '';
 
   constructor(
     private eventService: EventService,
@@ -25,6 +28,7 @@ export class ListEventsComponent  implements OnInit {
     private navController: NavController,
     private navParams: NavParams,
     private toastService: ToastService,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit() {
@@ -35,6 +39,7 @@ export class ListEventsComponent  implements OnInit {
     this.eventService.getFuturesEvents()
     .subscribe(events => {
       this.events = events;
+      this.eventosOriginal = events;
     })
   }
 
@@ -70,7 +75,7 @@ export class ListEventsComponent  implements OnInit {
           text: this.translate.instant('label.remove.event'),
           icon: 'trash',
           handler: () => {
-            this.removeEvent();
+            this.removeEventConfirm();
           },
         },
         {
@@ -95,6 +100,17 @@ export class ListEventsComponent  implements OnInit {
     }
   }
 
+  removeEventConfirm(): void {
+    const self = this;
+    this.alertService.alertConfirm(
+      this.translate.instant('label.confirm'),
+      this.translate.instant('label.remove.event.message'),
+      function(){
+        self.removeEvent()
+      }
+    )
+  }
+
   removeEvent(): void {
     this.navParams.data['event'] = null;
     this.eventService.deleteEvent(this.eventSelected.id)
@@ -103,6 +119,17 @@ export class ListEventsComponent  implements OnInit {
     }).catch(e => {
       this.toastService.showToast(this.translate.instant('label.delete.error'))
     });
+  }
+
+  filterList(event?: any): void {
+    this.events = this.eventosOriginal.filter(x => x.title?.toLowerCase().includes(this.searchBar.value.toLowerCase()));
+    this.typeSearch = null;
+    this.events = this.eventosOriginal.filter(e => e.className === this.typeSearch);
+  }
+
+  filterEventByType(type: string): void {
+    this.typeSearch = type;
+    this.searchBar.value = '';
   }
 
 }

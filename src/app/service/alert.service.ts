@@ -18,13 +18,13 @@ export class AlertService {
       message,
       buttons: [
         {
-          text: this.translate.instant('label.cancel'),
+          text: this.translate.instant('label.cancel.text'),
           role: 'cancel',
           handler: () => {
 
           }
         }, {
-          text: this.translate.instant('label.ok'),
+          text: this.translate.instant('label.ok.text'),
           handler: () => {
             functionOk();
           }
