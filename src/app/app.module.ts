@@ -12,6 +12,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import {Badge} from '@ionic-native/badge/ngx';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, "/assets/i18n/", ".json");
@@ -34,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient){
     AngularFireModule.initializeApp(environment.firebase), 
     AngularFireDatabaseModule
   ],
-  providers: [NavParams, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [NavParams, Badge, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
