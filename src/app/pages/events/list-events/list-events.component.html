@@ -9,24 +9,24 @@
 
       <ion-row>
         <ion-col size="12">
-          <ion-chip class="post" [ngClass]="{'selected': typeSearch === 'post'}" (click)="filterEventByType('post')">
+          <ion-chip class="post" [ngClass]="{'selected': typeSearch === 'blog'}" (click)="filterEventByType('blog')">
             <ion-icon name="desktop-outline"></ion-icon>
-            <ion-label>Avatar Chip</ion-label>
+            <ion-label>{{'label.type.post.event' | translate}}</ion-label>
           </ion-chip>
 
           <ion-chip class="video" [ngClass]="{'selected': typeSearch === 'video'}" (click)="filterEventByType('video')">
             <ion-icon name="caret-forward-circle-outline"></ion-icon>
-            <ion-label>Avatar Chip</ion-label>
+            <ion-label>{{'label.type.video.event' | translate}}</ion-label>
           </ion-chip>
 
           <ion-chip class="streaming" [ngClass]="{'selected': typeSearch === 'streaming'}" (click)="filterEventByType('streaming')">
             <ion-icon name="videocam-outline"></ion-icon>
-            <ion-label>Avatar Chip</ion-label>
+            <ion-label>{{'label.type.streaming.event' | translate}}</ion-label>
           </ion-chip>
 
           <ion-chip class="udemy" [ngClass]="{'selected': typeSearch === 'udemy'}" (click)="filterEventByType('udemy')">
             <ion-icon name="ticket-outline"></ion-icon>
-            <ion-label>Avatar Chip</ion-label>
+            <ion-label>{{'label.type.udemy.event' | translate}}</ion-label>
           </ion-chip>
         </ion-col>
       </ion-row>

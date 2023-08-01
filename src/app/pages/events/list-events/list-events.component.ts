@@ -124,12 +124,12 @@ export class ListEventsComponent  implements OnInit {
   filterList(event?: any): void {
     this.events = this.eventosOriginal.filter(x => x.title?.toLowerCase().includes(this.searchBar.value.toLowerCase()));
     this.typeSearch = null;
-    this.events = this.eventosOriginal.filter(e => e.className === this.typeSearch);
   }
-
+  
   filterEventByType(type: string): void {
     this.typeSearch = type;
     this.searchBar.value = '';
+    this.events = this.eventosOriginal.filter(e => e.className === this.typeSearch);
   }
 
 }
