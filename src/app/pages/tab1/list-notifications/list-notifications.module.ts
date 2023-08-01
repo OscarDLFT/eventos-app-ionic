@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListNotificationsComponent } from './list-notifications.component';
+import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -8,7 +10,9 @@ import { ListNotificationsComponent } from './list-notifications.component';
   declarations: [ListNotificationsComponent],
   exports: [ListNotificationsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    IonicModule,
+    TranslateModule,
   ]
 })
 export class ListNotificationsModule { }

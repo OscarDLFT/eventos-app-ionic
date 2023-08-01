@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PushNotificationSchema } from '@capacitor/push-notifications';
+import { NotificationsService } from 'src/app/service/notifications.service';
 
 @Component({
   selector: 'app-list-notifications',
@@ -7,8 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListNotificationsComponent  implements OnInit {
 
-  constructor() { }
+  public notifications: PushNotificationSchema[] = [];
+  constructor(
+    private notificationService: NotificationsService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.iniNotifications();
+  }
 
+  iniNotifications(): void {
+    this.notifications = this.notificationService.notifications;
+  }
 }

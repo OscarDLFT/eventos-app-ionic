@@ -35,6 +35,8 @@
     "label.delete.ok": "Evento eliminado",
     "label.delete.error": "Error al eliminar el evento",
     "label.confirm": "Confirmación",
-    "label.remove.event.message": "¿Estás seguro de que quieres eliminar el evento?"
+    "label.remove.event.message": "¿Estás seguro de que quieres eliminar el evento?",
+    "label.no.notifications": "No hay notificaciones",
+    "label.new.notification": "Nueva notificación"
 
 }

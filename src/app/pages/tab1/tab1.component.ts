@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ListNotificationsComponent } from './list-notifications/list-notifications.component';
 
 @Component({
   selector: 'app-tab1',
@@ -6,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab1.component.scss'],
 })
 export class Tab1Component  implements OnInit {
+  @ViewChild('listNot', { static: true }) listNot!: ListNotificationsComponent;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.ionViewWillEnter()
+  }
+
+  ionViewWillEnter(): void{
+    if(this.listNot){
+      this.listNot.iniNotifications();
+    }
+  }
 
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "449387759194",
+    "firebase_url": "https://eventos-1d5ff-default-rtdb.firebaseio.com",
+    "project_id": "eventos-1d5ff",
+    "storage_bucket": "eventos-1d5ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449387759194:android:bd24a71004d9fc92c3ba63",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449387759194-68g6t5isbe11r6psdh6q712gnvk851g9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgcoZPdiE3jF6pYjaGKgskWbvbd4_BMuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449387759194-68g6t5isbe11r6psdh6q712gnvk851g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
